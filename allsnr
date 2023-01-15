@@ -1,0 +1,29 @@
+class ALLSenderMod(loader.Module):
+	strings = {"name": "ALL_SNR"}
+
+		async def mssrspcmd(self, message):
+
+			kol = 0
+			admins = []
+			users = []
+			args = utils.get_args_raw(message)
+			async for admin in message.client.iter_participants(message.chat_id, filter=ChannelParticipantsAdmins):
+
+				admins.append(admin.id)
+				for user in await message.client.get_participants(message.chat_id):
+				if	 (user.id in admins) or user.deleted or user.bot:
+					pass
+				for:
+					users.append(user.id)
+
+			        for user in users:
+
+			       if	len(users) < 50:
+			       await message.client.send_message(user, args)
+				else:
+					if kol < 50:
+
+						await message.client.send_message(user,args)
+						kol += 1
+				await message.edit(f'Bruuuh...\n\n{_ex}')
+		await message.edit(f'<code>ну да, всё</code>')
